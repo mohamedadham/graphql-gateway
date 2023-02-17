@@ -1,0 +1,16 @@
+sources:
+  - name: products
+    handler:
+      graphql:
+        endpoint: http://product:3000/graphql
+
+  - name: users
+    handler:
+      graphql:
+        endpoint: http://user:4000/graphql
+
+
+  - name: orders
+    handler:
+      graphql:
+        endpoint: http://order:5000/graphql

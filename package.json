@@ -1,0 +1,17 @@
+{
+    "name": "graphql-gateway",
+    "version": "1.0.0",
+    "main": "index.js",
+    "author": "Mohamed adham",
+    "license": "MIT",
+    "private": "true",
+    "scripts": {
+        "start": "mesh dev --port 7000",
+        "build": "echo \"noop\";"
+    },
+    "dependencies": {
+        "@graphql-mesh/cli": "^0.82.23",
+        "@graphql-mesh/graphql": "^0.34.6",
+        "@graphql-mesh/runtime": "^0.46.14"
+    }
+}
