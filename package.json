@@ -10,8 +10,10 @@
         "build": "echo \"noop\";"
     },
     "dependencies": {
+        "@envelop/auth0": "^4.0.6",
         "@graphql-mesh/cli": "^0.82.23",
         "@graphql-mesh/graphql": "^0.34.6",
+        "@graphql-mesh/plugin-operation-field-permissions": "^0.1.14",
         "@graphql-mesh/runtime": "^0.46.14"
     }
 }

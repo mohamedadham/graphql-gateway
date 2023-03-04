@@ -14,3 +14,44 @@ sources:
     handler:
       graphql:
         endpoint: http://order:5000/graphql
+        operationHeaders:
+          authorization: "{context.headers.authorization}"
+
+
+
+plugins:
+  - auth0:
+      domain: ''
+      audience: 'http://localhost:7000/graphql' 
+      extendContextField: '_auth0'
+
+  # You can combine this with `@graphql-mesh/plugin-operation-field-permissions`
+  - operationFieldPermissions:
+      permissions:
+        - if: 'context._auth0?.sub != null'
+          allow:
+            - '*'
+
+additionalTypeDefs: |
+  """
+  Describes the authentication object as provided by Auth0.
+  """
+  type AuthenticationInfo {
+    """
+    String that uniquely identifies an authenticated user.
+    """
+    sub: String!
+  }
+ 
+  extend type Query {
+    """
+    The authentication information of the request.
+    """
+    authInfo: AuthenticationInfo
+  }
+ 
+additionalResolvers:
+  - ./additionalResolvers.ts
+
+serve:
+  staticFiles: public
